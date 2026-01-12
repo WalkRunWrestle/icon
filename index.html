@@ -1158,10 +1158,10 @@ function totalRouteMeters(route){
    We generate a recognisable bottle silhouette in "local" coords,
    then scale it to the target map meters so the progress ratio holds. */
 /* Diamond loop route (single continuous line, slightly open) */
+
 function generateBottleRouteBase(){
   const base = START;
 
-  // Diamond with softened corners; start/end close but not touching
   const unitLat = 0.020;
   const unitLng = 0.020;
 
@@ -1170,33 +1170,22 @@ function generateBottleRouteBase(){
     pts.push([base[0] + y*unitLat, base[1] + x*unitLng]);
   }
 
-  // Start near upper-left edge (leave a gap to the end point)
-  pushXY(-0.75,  0.55);
-
-  // Top point (rounded via extra points)
-  pushXY(-0.35,  1.05);
-  pushXY( 0.00,  1.20);
-  pushXY( 0.35,  1.05);
-  pushXY( 0.75,  0.55);
-
-  // Right point
-  pushXY( 1.20,  0.00);
-  pushXY( 0.75, -0.55);
-
-  // Bottom point
-  pushXY( 0.35, -1.05);
-  pushXY( 0.00, -1.35);
-  pushXY(-0.35, -1.05);
-  pushXY(-0.75, -0.55);
-
-  // Left point
-  pushXY(-1.20,  0.00);
-
-  // Return near start (but not touching)
-  pushXY(-0.85,  0.40);
+  // 5-point star outline
+  pushXY(0, 1.2);
+  pushXY(0.28, 0.35);
+  pushXY(1.15, 0.35);
+  pushXY(0.45, -0.15);
+  pushXY(0.7, -1.1);
+  pushXY(0, -0.5);
+  pushXY(-0.7, -1.1);
+  pushXY(-0.45, -0.15);
+  pushXY(-1.15, 0.35);
+  pushXY(-0.28, 0.35);
+  pushXY(0, 1.05);
 
   return pts;
 }
+
 
 
 
